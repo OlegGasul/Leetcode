@@ -10,31 +10,25 @@ def printNodes(head):
         item = item.next
 
 def rotateRight(head, k: int):
-    count = 0
-
+    items = []
     item = head
     while item != None:
-        count += 1
-        last = item
+        items.append(item)
         item = item.next
+    
+    length = len(items)
 
-    if count == 0:
+    if length == 0:
         return head
     
-    perm = k % count
+    perm = k % length
     if perm == 0:
         return head
 
-    item = head
-    prev = None
-    for n in range(0, count - perm):
-        prev = item
-        item = item.next
+    items[length - perm - 1].next = None
+    items[length - 1].next = head
 
-    prev.next = None
-    last.next = head
-
-    return item
+    return items[length - perm]
 
 
 head = ListNode(1)
@@ -43,5 +37,5 @@ head.next.next = ListNode(3)
 head.next.next.next = ListNode(4)
 head.next.next.next.next = ListNode(5)
 
-newHead = rotateRight(head, 15)
+newHead = rotateRight(head, 24)
 printNodes(newHead)
