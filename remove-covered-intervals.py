@@ -30,4 +30,4 @@ def removeCoveredIntervals(intervals) -> int:
     return len(intervals)
 
 print(removeCoveredIntervals([[1, 4], [3, 6], [2, 8]]))
-# print(removeCoveredIntervals([[1, 2], [1, 4], [3, 4]]))
+print(removeCoveredIntervals([[1, 2], [1, 4], [3, 4]]))
