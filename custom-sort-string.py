@@ -14,11 +14,7 @@ def customSortString(order: str, s: str) -> str:
         index2 = indexes[b] if b in indexes else length
         return index1 - index2
 
-    strs = list(s)
-
-    strs = sorted(strs, key = cmp_to_key(compare))
-
-    return ''.join(strs)
+    return ''.join(sorted(list(s), key = cmp_to_key(compare)))
 
 
 print(customSortString("cba", "abcd"))
