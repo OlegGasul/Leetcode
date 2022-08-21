@@ -1,9 +1,10 @@
 import collections
 
 def countBadPairs(nums) -> int:
-    dp = [0] * len(nums)
+    length = len(nums)
+    dp = [0] * length
 
-    for i in range(len(nums)):
+    for i in range(length):
         dp[i] = nums[i] - i
 
     counter = collections.Counter(dp)
@@ -13,7 +14,7 @@ def countBadPairs(nums) -> int:
             n = x[1] - 1
             result += int((n * (n + 1)) / 2)
 
-    n = len(nums) - 1
+    n = length - 1
     result = int((n * (n + 1)) / 2) - result
     
     return result
