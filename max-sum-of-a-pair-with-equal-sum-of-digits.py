@@ -1,8 +1,8 @@
 def maximumSum(nums) -> int:
     length = len(nums)
-    dp = [0] * length
     
     values = {}
+    maximum = -1
 
     for i in range(length):
         value = sum(list(map(int, list(str(nums[i])))))
@@ -12,10 +12,9 @@ def maximumSum(nums) -> int:
 
         if len(values[value]) > 1:
             values[value] = sorted(values[value], reverse = True)[0:2]
+            maximum = max(maximum, sum(values[value]))
     
-    values = list(filter(lambda x: len(x) > 1, values.values()))
-    
-    return max(list(map(sum, values))) if len(values) > 0 else -1
+    return maximum
 
 
 print(maximumSum([18, 43, 36, 13, 7]))
