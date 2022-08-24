@@ -73,6 +73,6 @@ def lenLongestFibSubseq2(nums: [int]) -> int:
     return 0 if result == 2 else result
             
 
-print(lenLongestFibSubseq([1, 2, 3, 4, 5, 6, 7, 8]))
+print(lenLongestFibSubseq2([1, 2, 3, 4, 5, 6, 7, 8]))
 print(lenLongestFibSubseq2([1, 3, 7, 11, 12, 14, 18]))
-print(lenLongestFibSubseq([1, 3, 5]))
+print(lenLongestFibSubseq2([1, 3, 5]))
