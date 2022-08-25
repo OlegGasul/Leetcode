@@ -1,7 +1,9 @@
 def selfDividingNumbers(left: int, right: int):
     result = []
-        
-    for num in range(left, right + 1):
+    if left <= 10:
+        result += list(range(max(1, left), 10))
+    
+    for num in range(max(left, 10), right + 1):
         nums = list(str(num))
         counter = 0
             
