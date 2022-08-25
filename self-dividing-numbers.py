@@ -4,12 +4,15 @@ def selfDividingNumbers(left: int, right: int):
         result += list(range(max(1, left), 10))
     
     for num in range(max(left, 10), right + 1):
-        nums = list(str(num))
+        nums = set(str(num))
+        if '0' in nums:
+            continue
+        
         counter = 0
-            
+        
         for digit in nums:
             digit = int(digit)
-            if digit == 0 or num % digit != 0:
+            if num % digit != 0:
                 break
             counter += 1
                 
