@@ -30,15 +30,7 @@ def platesBetweenCandles(s: str, queries):
         right = min(query[1], candlesFromLeft[query[1]])
         if left < right:
             result[i] = plates[right] - plates[left]
-
-        # print('candles[query[0]] = ' + str(candlesFromRight[query[0]]))
-        # print('candles[query[1]] = ' + str(candlesFromLeft[query[1]]))
         
-
-    # print(plates)
-    # print(candlesFromLeft)
-    # print(candlesFromRight)
-
     return result
 
 print(platesBetweenCandles("**|**|***|", [[2, 5], [5, 9]]))
