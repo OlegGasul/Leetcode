@@ -11,11 +11,6 @@ def addStrings(num1: str, num2: str) -> str:
         result.insert(0, str(value % 10))
         rest = value // 10
 
-    while num1 or rest:
-        value = (int(num1.pop()) if num1 else 0) + rest
-        result.insert(0, str(value % 10))
-        rest = value // 10
-
     return ''.join(result)
     
 
