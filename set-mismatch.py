@@ -1,4 +1,3 @@
-from time import sleep
 
 def findErrorNums(nums):
     length = len(nums)
@@ -22,7 +21,7 @@ def findErrorNums(nums):
     
 
 
-print(findErrorNums([3, 2, 4, 1, 1]))
-print(findErrorNums([1, 2, 2, 4]))
-print(findErrorNums([3, 2, 2]))
-print(findErrorNums([8, 7, 3, 5, 3, 6, 1, 4]))
+assert findErrorNums([3, 2, 4, 1, 1]) == [1, 5]
+assert findErrorNums([1, 2, 2, 4]) == [2, 3]
+assert findErrorNums([3, 2, 2]) == [2, 1]
+assert findErrorNums([8, 7, 3, 5, 3, 6, 1, 4]) == [3, 2]
