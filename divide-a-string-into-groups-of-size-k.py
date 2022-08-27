@@ -12,6 +12,6 @@ def divideString(s: str, k: int, fill: str):
         
     return result
 
-print(divideString("ctoyjrwtngqwt", 8, "n"))
-print(divideString("abcdefghij", 3, "x"))
-print(divideString("abcdefghij", 1, "x"))
+assert divideString("ctoyjrwtngqwt", 8, "n") == ['ctoyjrwt', 'ngqwtnnn']
+assert divideString("abcdefghij", 3, "x") == ['abc', 'def', 'ghi', 'jxx']
+assert divideString("abcdefghij", 1, "x") == ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
