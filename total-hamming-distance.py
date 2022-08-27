@@ -15,9 +15,8 @@ def totalHammingDistance(nums) -> int:
             key = (x, y)
             if key in cache:
                 return counter + cache[key]
-            
-            value = (x & 1) ^ (y & 1)
-            cache[key] = value
+            else:
+                value = (x & 1) ^ (y & 1)
             
             counter += value
             x = x >> 1 if x > 0 else 0
@@ -27,7 +26,7 @@ def totalHammingDistance(nums) -> int:
 
     total = 0
 
-    nums = sorted(list(set(nums)))
+    nums = sorted(nums, reverse = True)
     
     for i in range(len(nums)):
         for j in range(i + 1, len(nums)):
@@ -42,4 +41,6 @@ def totalHammingDistance(nums) -> int:
 
     return total
 
-print(totalHammingDistance([4, 14, 2]))
+# print(totalHammingDistance([4, 14, 2]))
+# print(totalHammingDistance([4, 14, 4]))
+print(totalHammingDistance([2, 9, 3, 5, 9]))
