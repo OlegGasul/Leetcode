@@ -1,6 +1,5 @@
 def divideString(s: str, k: int, fill: str):
     length = len(s)
-        
     result = []
         
     i = 0
