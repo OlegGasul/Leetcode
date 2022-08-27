@@ -14,3 +14,4 @@ def divideString(s: str, k: int, fill: str):
 
 print(divideString("ctoyjrwtngqwt", 8, "n"))
 print(divideString("abcdefghij", 3, "x"))
+print(divideString("abcdefghij", 1, "x"))
