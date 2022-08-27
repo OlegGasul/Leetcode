@@ -41,6 +41,19 @@ def totalHammingDistance(nums) -> int:
 
     return total
 
+def totalHammingDistance2(nums) -> int:
+    total = 0
+    
+    for i in range(32):
+        result = 0
+        
+        for j in range(len(nums)):
+            result += (nums[j] >> i & 1)
+        
+        total += (len(nums) - result) * result
+    return total
+
 # print(totalHammingDistance([4, 14, 2]))
 # print(totalHammingDistance([4, 14, 4]))
 print(totalHammingDistance([2, 9, 3, 5, 9]))
+print(totalHammingDistance2([2, 9, 3, 5, 9]))
