@@ -15,9 +15,11 @@ def findKthPositive(arr, k: int) -> int:
         else:
             counter += missed
 
-    return k if counter > k else arr[-1] + (k - counter)
+    return k if counter >= k else arr[-1] + (k - counter)
 
 print(findKthPositive([2, 3, 4, 7, 11], 5))
 print(findKthPositive([5], 5))
 print(findKthPositive([20], 3))
 print(findKthPositive([20], 20))
+print(findKthPositive([2], 1))
+print(findKthPositive([2], 2))
