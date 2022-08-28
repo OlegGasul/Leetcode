@@ -3,6 +3,8 @@ def findKthPositive(arr, k: int) -> int:
         return k
     
     counter = arr[0] - 1
+    if counter >= k:
+        return k
     
     for i in range(1, len(arr)):
         if arr[i] - 1 == arr[i - 1]:
@@ -23,3 +25,4 @@ print(findKthPositive([20], 3))
 print(findKthPositive([20], 20))
 print(findKthPositive([2], 1))
 print(findKthPositive([2], 2))
+print(findKthPositive([3, 10], 2))
