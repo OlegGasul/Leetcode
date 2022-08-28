@@ -24,3 +24,4 @@ def addBinary(a: str, b: str) -> str:
 
 print(addBinary("11", "1"))
 print(addBinary("1111", "1111"))
+print(addBinary("1010", "1011"))
