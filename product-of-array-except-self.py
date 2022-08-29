@@ -20,4 +20,4 @@ def productExceptSelf(nums):
     
     return result
 
-print(productExceptSelf([1, 2, 3, 4, 5]))
+print(productExceptSelf([1, 2, 3]))
