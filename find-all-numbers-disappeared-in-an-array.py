@@ -20,10 +20,7 @@ def findDisappearedNumbers(nums):
     return result
     
 
-# print(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))
-# print(findDisappearedNumbers([1, 4, 25, 10, 25]))
-# print(findDisappearedNumbers([1, 1, 2]))
-print(findDisappearedNumbers([5, 10]))
-
-# [4, 3, 2, 7, 8, 2, 3, 1]
-# [3, 2, 3, 4, 8, 2, 7, 1]
+print(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))
+print(findDisappearedNumbers([1, 4, 25, 10, 25]))
+print(findDisappearedNumbers([1, 1, 2]))
+print(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))
