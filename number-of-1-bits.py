@@ -1,5 +1,11 @@
 def hammingWeight(n: int) -> int:
-    return sum([int(x) for x in bin(n)[2:]])
+    result = 0
+
+    while n > 0:
+        result += n & 1
+        n >>= 1
+
+    return result
     
 
 print(hammingWeight(11))
