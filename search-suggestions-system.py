@@ -18,8 +18,6 @@ class Trie:
             current = node
             current.words.append(word)
             current.words.sort()
-        
-        current.endOfString = True
 
     def searchString(self, word, maxSize):
         currentNode = self.root
