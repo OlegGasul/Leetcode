@@ -22,3 +22,5 @@ def searchInsert(nums, target: int) -> int:
     return right
 
 print(searchInsert([1, 3, 5, 6], 2))
+print(searchInsert([1, 3, 5, 10], 20))
+print(searchInsert([1, 3, 5, 10], 0))
