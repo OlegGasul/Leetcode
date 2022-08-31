@@ -7,7 +7,7 @@ def findPoisonedDuration(timeSeries, duration: int) -> int:
         else:
             result += timeSeries[i] - timeSeries[i - 1]
                 
-        result += duration
+    result += duration
         
     return result
 
