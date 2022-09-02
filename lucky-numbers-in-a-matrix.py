@@ -1,48 +1,16 @@
 def luckyNumbers(matrix):
-    rowsLength = len(matrix)
-    colsLength = len(matrix[0])
-        
-    rows = [-1] * rowsLength
-    cols = [-1] * colsLength
+    minRows = [min(x) for x in matrix]
+    
+    maxColumns = []
+    
+    for i in range(len(matrix[0])):
+        tmp = []
+        for j in range(len(matrix)):
+            tmp.append(matrix[j][i])
+        maxColumns.append(max(tmp))
 
-    def findMinRowIndex(row):
-        if rows[row] > 0:
-            return rows[row]
-        
-        minimum = float('inf')
-        minimumIndex = -1
-            
-        for i in range(colsLength):
-            if matrix[row][i] < minimum:
-                minimum = matrix[row][i]
-                minimumIndex = i
-            
-        rows[row] = minimumIndex
-        return minimumIndex
-        
-    def findMaxColIndex(col):
-        if cols[col] > 0:
-            return cols[col]
-        
-        maximum = float('-inf')
-        maximumIndex = -1
-            
-        for i in range(rowsLength):
-            if matrix[i][col] > maximum:
-                maximum = matrix[i][col]
-                maximumIndex = i
-        
-        cols[col] = maximumIndex
-        return maximumIndex
-        
-    for i in range(rowsLength):
-        col = findMinRowIndex(i)
-        index = findMaxColIndex(col)
 
-        if index == i:
-            return [matrix[i][col]]
-
-    return []
+    return set(minRows) & set(maxColumns)
 
 
 print(luckyNumbers([
