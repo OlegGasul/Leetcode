@@ -7,7 +7,7 @@ def lengthOfLIS(nums) -> int:
         for j in range(i):
             if nums[i] >= nums[j]:
                 dp[i] = max(dp[i], dp[j] + 1)
-                result = max(dp[i], ret)
+                result = max(dp[i], result)
     
     return result
 
