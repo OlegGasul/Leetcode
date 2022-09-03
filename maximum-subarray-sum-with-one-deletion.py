@@ -43,19 +43,21 @@ def maximumSum(nums) -> int:
         return maximum
 
     dp = [0] * length
-    localMax = 0
-    for i in range(length):
-        localMax = max(nums[i], nums[i] + localMax)
-        dp[i] = localMax
-
     dp2 = [0] * length
     localMax = 0
+    localMax2 = 0
     globalMax = float('-inf')
-    for i in reversed(range(length)):
+
+    for i in range(length):
+        j = length - i - 1
         localMax = max(nums[i], nums[i] + localMax)
-        if localMax > globalMax:
-            globalMax = localMax
-        dp2[i] = localMax
+        localMax2 = max(nums[j], nums[j] + localMax2)
+        
+        if localMax2 > globalMax:
+            globalMax = localMax2
+        
+        dp[i] = localMax
+        dp2[j] = localMax2
 
     best = globalMax
     for i in range(1, length - 1):
@@ -64,7 +66,7 @@ def maximumSum(nums) -> int:
     # dp, dp2 - maximums forward and backward using Kadanes algorithm
     # print(dp)
     # print(dp2)
-
+    
     return best
 
 print(maximumSum([1, -2, 0, 3]))
