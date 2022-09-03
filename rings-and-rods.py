@@ -11,8 +11,6 @@ def countPoints(rings: str) -> int:
     for i in range(10):
         result += 1 if dp[i] == 7 else 0
     
-    # print(dp)
-
     return result
 
 print(countPoints("B0B6G0R6R0R6G9"))
