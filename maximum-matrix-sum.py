@@ -3,6 +3,8 @@
 # Two adjacent negative cells can be both made positive. In case of off odd number of negative or 0 cells in matrix, all cells except one will remain positive.
 # The only negative will be cell with lowest absolute value. In case of even numbers of negative or 0 cells, all cells will remain positive.
 
+# Just need to calculate total and leave 2 minimum cells if we have odd number of negative elements
+
 def maxMatrixSum(matrix) -> int:
     total, count, mini = 0, 0, float('inf')
 
