@@ -5,7 +5,7 @@ def containVirus(isInfected) -> int:
     cols = len(isInfected[0])
         
     def collectArea(queue, i, j):
-        isInfected[i][j] = 0
+        isInfected[i][j] = 3
         queue.append([i, j])
             
         if j + 1 < cols and isInfected[i][j + 1] == 1:
@@ -16,7 +16,25 @@ def containVirus(isInfected) -> int:
             collectArea(queue, i, j - 1)
         if i - 1 >= 0 and isInfected[i - 1][j] == 1:
             collectArea(queue, i - 1, j)
-                
+    
+    def calculateThreats(queue):
+        threats = set()
+        
+        for i, j in queue:
+            if j + 1 < cols and isInfected[i][j + 1] == 0:
+                threats.add((i, j + 1))
+            if i + 1 < rows and isInfected[i + 1][j] == 0:
+                threats.add((i + 1, j))
+            if j - 1 >= 0 and isInfected[i][j - 1] == 0:
+                threats.add((i, j - 1))
+            if i - 1 >= 0 and isInfected[i - 1][j] == 0:
+                threats.add((i - 1, j))
+
+        for i, j in queue:
+            isInfected[i][j] = 0
+
+        return len(threats)
+
     def collectAreas():
         areas = []
             
@@ -25,7 +43,9 @@ def containVirus(isInfected) -> int:
                 if isInfected[i][j] == 1:
                     queue = []
                     collectArea(queue, i, j)
-                    areas.append((len(queue), queue))
+
+                    threats = calculateThreats(queue)
+                    areas.append((threats, queue))
                         
         return areas
 
@@ -57,7 +77,7 @@ def containVirus(isInfected) -> int:
     hasAliveVirus = len(areas) > 0
         
     while hasAliveVirus:
-        heapq.heapify(areas)
+        heapq._heapify_max(areas)
         
         area = heapq.heappop(areas)
         
@@ -111,8 +131,13 @@ print(containVirus([
     [0, 1, 0, 1, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 0, 0, 1]]))
 
-print(containVirus([
-    [0, 1, 0, 0, 0, 0, 0, 1],
-    [0, 1, 0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0]]))
+# print(containVirus([
+#     [1, 1, 1],
+#     [1, 0, 1],
+#     [1, 1, 1]]))
+
+# print(containVirus([
+#     [0, 1, 0, 0, 0, 0, 0, 1],
+#     [0, 1, 0, 0, 0, 0, 0, 1],
+#     [0, 0, 0, 0, 0, 0, 0, 1],
+#     [0, 0, 0, 0, 0, 0, 0, 0]]))
