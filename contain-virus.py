@@ -99,6 +99,7 @@ def containVirus(isInfected) -> int:
 
         print('After expansion')
         print(isInfected)
+        print()
 
         if hasAliveVirus:
             areas = collectAreas()
@@ -110,8 +111,8 @@ print(containVirus([
     [0, 1, 0, 1, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 0, 0, 1]]))
 
-# print(containVirus([
-#     [0, 1, 0, 0, 0, 0, 0, 1],
-#     [0, 1, 0, 0, 0, 0, 0, 1],
-#     [0, 0, 0, 0, 0, 0, 0, 1],
-#     [0, 0, 0, 0, 0, 0, 0, 0]]))
+print(containVirus([
+    [0, 1, 0, 0, 0, 0, 0, 1],
+    [0, 1, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0]]))
