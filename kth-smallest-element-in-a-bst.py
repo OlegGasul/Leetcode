@@ -26,5 +26,6 @@ def kthSmallest(root, k: int) -> int:
     return heapq.nsmallest(k, queue)[-1]
 
 
+print(kthSmallest(TreeNode(5, TreeNode(3, TreeNode(2, TreeNode(1)), TreeNode(4)), TreeNode(6)), 2))
 print(kthSmallest(TreeNode(2, TreeNode(1, None, TreeNode(2)), TreeNode(4)), 1))
 print(kthSmallest(TreeNode(5, TreeNode(3, TreeNode(2, TreeNode(1)), TreeNode(4)), TreeNode(6)), 3))
