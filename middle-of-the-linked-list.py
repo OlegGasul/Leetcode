@@ -18,11 +18,11 @@ def middleNode(head):
         
     node = head
         
-    nums = []
+    nodes = []
     while node:
-        nums.append(node)
+        nodes.append(node)
         node = node.next
             
-    return nums[len(nums) // 2]
+    return nodes[len(nodes) // 2]
 
 printNodes(middleNode(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))))
