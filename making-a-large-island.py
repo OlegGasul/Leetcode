@@ -5,28 +5,27 @@ def largestIsland(grid) -> int:
 
     islands = {}
     id = 2
+    squares = Counter()
 
-    def markIsland(i, j, id, counter):
+    def markIsland(i, j, id):
         grid[i][j] = id
-        counter[id] += 1
+        squares[id] += 1
         
         if j + 1 < n and grid[i][j + 1] == 1:
-            markIsland(i, j + 1, id, counter)
+            markIsland(i, j + 1, id)
         if i + 1 < n and grid[i + 1][j] == 1:
-            markIsland(i + 1, j, id, counter)
+            markIsland(i + 1, j, id)
         if j - 1 >= 0 and grid[i][j - 1] == 1:
-            markIsland(i, j - 1, id, counter)
+            markIsland(i, j - 1, id)
         if i - 1 >= 0 and grid[i - 1][j] == 1:
-            markIsland(i - 1, j, id, counter)
+            markIsland(i - 1, j, id)
 
-    squares = Counter()
     hasZero = False
 
     for i in range(n):
         for j in range(n):
             if grid[i][j] == 1:
-                squares[id] = 0
-                markIsland(i, j, id, squares)
+                markIsland(i, j, id)
                 id += 1
             elif grid[i][j] == 0:
                 hasZero = True
