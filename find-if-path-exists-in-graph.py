@@ -16,17 +16,15 @@ def validPath(n: int, edges, source: int, destination: int) -> bool:
     while queue:
         node = queue.pop(0)
 
-        visited.add(node)
-
         for edge in graph[node]:
             if edge in visited:
                 continue
             if edge == destination:
                 return True
-
+                
+            visited.add(edge)
             queue.append(edge)
-
-
+    
     return False
 
 print(validPath(3, [[0, 1], [1, 2], [2, 0]], 0, 2))
