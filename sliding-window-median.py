@@ -3,21 +3,17 @@ import bisect
 def medianSlidingWindow(nums, k: int):
     window = sorted(nums[:k])
     result = []
+    length = len(nums)
 
-    right = k
-    while right <= len(nums):
-        window = nums[right - k : right]
-        window.sort()
-        
+    for i in range(k, length + 1):
         if k % 2 == 0:
             result.append((window[k // 2] + window[k // 2 - 1]) / 2)
         else:
             result.append(window[k // 2])
 
-        window.remove(nums[right - k])
-        bisect.insort(window, nums[right - 1])
-
-        right += 1
+        if i < length:
+            window.remove(nums[i - k])
+            bisect.insort(window, nums[i])
 
     return result
             
