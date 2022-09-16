@@ -24,7 +24,7 @@ class CountIntervals:
         
         self.counter += right - left
         self.intervals[i : j] = [left, right]
-        
+
     def count(self) -> int:
         return self.counter
 
