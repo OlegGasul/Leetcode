@@ -41,6 +41,7 @@ def mostBooked(n: int, meetings) -> int:
     return counter.most_common()[0][0]
 
 
+print(mostBooked(2, [[19, 20], [14, 15], [13, 14], [11, 20]]))
 print(mostBooked(4, [[19, 20], [14, 15], [13, 14], [11, 20]]))
 print(mostBooked(4, [[18, 19], [3, 12], [17, 19], [2, 13], [7, 10]]))
 print(mostBooked(2, [[0, 10], [1, 5], [2, 7], [3, 4]]))
