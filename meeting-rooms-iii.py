@@ -3,9 +3,7 @@ import functools
 from collections import Counter
 
 def mostBooked(n: int, meetings) -> int:
-    def compare(a, b):
-        return a[0] - b[0]
-    meetings = sorted(meetings, key = functools.cmp_to_key(compare))
+    meetings.sort()
 
     counter = Counter()
 
