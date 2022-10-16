@@ -1,3 +1,5 @@
+# Given two binary strings a and b, return their sum as a binary string.
+
 from time import sleep
 
 def addBinarySimple(a: str, b: str) -> str:
