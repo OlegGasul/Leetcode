@@ -5,18 +5,18 @@ class TreeNode:
         self.right = right
 
 def sortedArrayToBST(nums):
-
-    def traverse(nums):
-        if len(nums) == 0:
-            return None
+    def createNode(start, end):
+        middle = start + (end - start) // 2
+        node = TreeNode(nums[middle])
             
-        mid = len(nums) // 2
-        root = TreeNode(nums[mid])
-        root.left = traverse(nums[: mid])
-        root.right = traverse(nums[mid + 1 : ])
-
-        return root
+        if middle > start:
+            node.left = createNode(start, middle - 1)
+                
+        if middle < end:
+            node.right = createNode(middle + 1, end)
+            
+        return node
         
-    return traverse(nums)
+    return createNode(0, len(nums) - 1)
 
 print(sortedArrayToBST([-10, -3, 0, 5, 9]))
