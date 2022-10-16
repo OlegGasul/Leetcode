@@ -8,3 +8,4 @@ def finalValueAfterOperations(operations) -> int:
 
 print(finalValueAfterOperations(["--X", "X++", "X++"]))
 print(finalValueAfterOperations(["++X", "++X", "X++"]))
+print(finalValueAfterOperations(["X++", "++X", "--X", "X--"]))
