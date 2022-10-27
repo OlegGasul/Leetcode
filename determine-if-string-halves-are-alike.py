@@ -1,4 +1,7 @@
 def halvesAreAlike(s: str) -> bool:
+    if len(s) % 2 != 0:
+        return False
+    
     def isVowel(ch):
         return ch in set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
         
