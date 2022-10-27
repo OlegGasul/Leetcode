@@ -10,7 +10,7 @@ def evaluateTree(root) -> bool:
         
     def dfs(node):
         if not node.left and not node.right:
-            return True if node.val == 1 else False
+            return bool(node.val)
             
         leftValue = dfs(node.left) if node.left else True
         rightValue = dfs(node.right) if node.right else True
