@@ -15,10 +15,10 @@ def minimumBuckets(street: str) -> int:
             
             if street[i + 1] == '.':
                 street[i + 1] = 'C'
-                result += 1
             elif street[i - 1] == '.':
                 street[i - 1] = 'C'
-                result += 1
+            
+            result += 1
                     
     return result
 
