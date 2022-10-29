@@ -25,6 +25,7 @@ def commonChars(words):
                 
     return result
 
-
+print(commonChars([]))
+print(commonChars(["bella"]))
 print(commonChars(["bella", "label", "roller"]))
 print(commonChars(["cool", "lock", "cook"]))
