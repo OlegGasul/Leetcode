@@ -25,3 +25,5 @@ def minimumBuckets(street: str) -> int:
 print(minimumBuckets("H..H"))
 print(minimumBuckets(".H.H."))
 print(minimumBuckets(".HHH."))
+print(minimumBuckets(""))
+print(minimumBuckets("..."))
