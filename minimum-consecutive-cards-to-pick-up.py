@@ -5,7 +5,6 @@ def minimumCardPickup(cards) -> int:
         
     for i in range(len(cards)):
         if cards[i] in indecies:
-            print(i)
             result = min(result, i - indecies[cards[i]])
             
         indecies[cards[i]] = i
