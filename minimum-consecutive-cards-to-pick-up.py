@@ -10,8 +10,6 @@ def minimumCardPickup(cards) -> int:
             
         indecies[cards[i]] = i
 
-    print(indecies)
-            
     return result + 1 if result != float('inf') else -1
 
 print(minimumCardPickup([3, 4, 2, 3, 4, 7]))
