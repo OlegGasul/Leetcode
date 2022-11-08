@@ -30,3 +30,4 @@ class Solution:
 solution = Solution()
 print(solution.originalDigits("owoztneoer"))
 print(solution.originalDigits("fviefuro"))
+print(solution.originalDigits("threefour"))
