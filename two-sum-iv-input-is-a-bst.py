@@ -9,7 +9,7 @@ class Solution:
         visited = set()
 
         def dfs(node):
-            if abs(node.val - k) in visited:
+            if k - node.val in visited:
                 return True
 
             visited.add(node.val)
@@ -26,4 +26,4 @@ class Solution:
         return dfs(root)
 
 solution = Solution()
-print(solution.findTarget(TreeNode(5, TreeNode(3, TreeNode(2), TreeNode(4)), TreeNode(6, None, TreeNode(7)))))
+print(solution.findTarget(TreeNode(5, TreeNode(3, TreeNode(2), TreeNode(4)), TreeNode(6, None, TreeNode(7))), 9))
