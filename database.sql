@@ -18,3 +18,7 @@ select u.user_id buyer_id,
        (select count(*) from Orders o where YEAR(o.order_date) = '2019' and u.user_id = o.buyer_id) as "orders_in_2019"
 from Users u;
 
+-- https://leetcode.com/problems/combine-two-tables/description/
+-- Write an SQL query to report the first name, last name, city, and state of each person in the Person table. If the address of a personId is not present in the Address table, report null instead.
+select p.firstName, p.lastName, a.city, a.state
+from Person p left join Address a on p.personId = a.personId;
