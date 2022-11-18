@@ -22,3 +22,27 @@ from Users u;
 -- Write an SQL query to report the first name, last name, city, and state of each person in the Person table. If the address of a personId is not present in the Address table, report null instead.
 select p.firstName, p.lastName, a.city, a.state
 from Person p left join Address a on p.personId = a.personId;
+
+-- https://leetcode.com/problems/article-views-i/
+-- Write an SQL query to find all the authors that viewed at least one of their own articles.
+select distinct author_id as id
+from Views
+where author_id = viewer_id
+order by author_id;
+
+-- https://leetcode.com/problems/bank-account-summary-ii/
+-- Write an SQL query to report the name and balance of users with a balance higher than 10000. The balance of an account is equal to the sum of the amounts of all transactions involving that account.
+select u.name as "NAME", sum(t.amount) as "BALANCE"
+from Users u inner join Transactions t on u.account = t.account
+group by u.account, u.name
+having sum(t.amount) > 10000;
+
+-- https://leetcode.com/problems/calculate-special-bonus/
+-- Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise.
+select employee_id,
+    case
+        when mod(employee_id, 2) <> 0 and not name like 'M%' then salary
+        else 0
+    end as "bonus"
+from Employees
+order by employee_id
