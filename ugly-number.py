@@ -1,0 +1,15 @@
+class Solution:
+    def isUgly(self, n: int) -> bool:
+        if n <= 0:
+            return False
+
+        for i in [2, 3, 5]:
+            while n % i == 0:
+                n //= i
+
+        return n == 1
+
+solution = Solution()
+print(solution.isUgly(6))
+print(solution.isUgly(1))
+print(solution.isUgly(14))
