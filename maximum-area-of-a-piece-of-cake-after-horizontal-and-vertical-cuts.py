@@ -3,14 +3,12 @@ class Solution:
         horizontalCuts.sort()
         verticalCuts.sort()
 
-        hh = []
         prev = 0
         maxH = float('-inf')
         for n in horizontalCuts + [h]:
             maxH = max(maxH, n - prev)
             prev = n
 
-        vh = []
         prev = 0
         maxW = float('-inf')
         for n in verticalCuts + [w]:
