@@ -11,14 +11,13 @@ class Solution:
                 for k in range(y1, y2 + 1):
                     artMap[(j, k)] = i
 
+        result = 0
         for x, y in dig:
             if (x, y) in artMap:
                 cells[artMap[(x, y)]] -= 1
-
-        result = 0
-        for c in cells.values():
-            result += 1 if c == 0 else 0
-
+                if cells[artMap[(x, y)]] == 0:
+                    result += 1
+        
         return result
 
 solution = Solution()
