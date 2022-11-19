@@ -14,23 +14,23 @@ def createList(nums):
     return head
 
 class Solution:
-    def nodesBetweenCriticalPoints(self, head):
-        criticals = []
+    def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> List[int]:
         minDistance = float('inf')
+        firstCritical = None
+        lastCritical = None
         
         i = 1
         first = None
         second = None
         node = head
-
         while node:
             if first and second:
-                if first > second and second < node.val:
-                    criticals.append(i)
-                elif first < second and second > node.val:
-                    criticals.append(i)
-                if len(criticals) > 1:
-                    minDistance = min(minDistance, criticals[-1] - criticals[-2])
+                if (first > second and second < node.val) or (first < second and second > node.val):
+                    if not firstCritical:
+                        firstCritical = i
+                    if lastCritical:
+                        minDistance = min(minDistance, i - lastCritical)
+                    lastCritical = i
 
             first = second
             second = node.val
@@ -38,10 +38,7 @@ class Solution:
             node = node.next
             i += 1
 
-        if len(criticals) < 2:
-            return [-1, -1]
-        else:
-            return [minDistance, criticals[-1] - criticals[0]]
+        return [minDistance, lastCritical - firstCritical] if firstCritical and lastCritical and firstCritical < lastCritical else [-1, -1]
 
 solution = Solution()
 print(solution.nodesBetweenCriticalPoints(createList([5, 3, 1, 2, 5, 1, 2])))
