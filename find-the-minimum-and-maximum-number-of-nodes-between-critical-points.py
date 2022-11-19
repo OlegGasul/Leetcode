@@ -14,7 +14,7 @@ def createList(nums):
     return head
 
 class Solution:
-    def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> List[int]:
+    def nodesBetweenCriticalPoints(self, head):
         minDistance = float('inf')
         firstCritical = None
         lastCritical = None
