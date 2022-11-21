@@ -1,45 +1,23 @@
 import heapq
 
-def maxAverageRatio(classes, extraStudents: int) -> float:
-    length = len(classes)
-    def comparator(a, b):
-        return a[1] - b[1]
+class Solution:
+    def maxAverageRatio(self, classes, extraStudents: int) -> float:
+        def profit(a, b):
+            return (a + 1) / (b + 1) - a / b
 
-    dp = []
-    for i in range(length):
-        heapq.heappush(dp, (classes[i][0] / classes[i][1], i))
-    heapq.heapify(dp)
+        maxHeap = []
+        for a, b in classes:
+            a, b = a * 1.0, b * 1.0
+            maxHeap.append((-profit(a, b), a, b))
+        heapq.heapify(maxHeap)  # Heapify maxHeap cost O(N)
 
-    # print(classes)
-    # print()
+        while extraStudents:
+            p, a, b = heapq.heappop(maxHeap)
+            heapq.heappush(maxHeap, (-profit(a + 1, b + 1), a + 1, b + 1))
+            extraStudents -= 1
 
-    while extraStudents:
-        value = heapq.heappop(dp)
-        
-        # print(value)
+        return sum(a / b for p, a, b in maxHeap) / len(classes)
 
-        clazz = classes[value[1]]
-        clazz[0] += 1
-        clazz[1] += 1
-        
-        heapq.heappush(dp, (clazz[0] / clazz[1], value[1]))
-        heapq.heapify(dp)
-
-        # print(dp)
-        # print(classes)
-        # print()
-
-        extraStudents -= 1
-
-    result = 0
-    for i in range(length):
-        result += classes[i][0] / classes[i][1]
-    result = result / length
-
-    # print(dp)
-    # print(classes)
-
-    return result
-
-print(maxAverageRatio([[1, 2], [3, 5], [2, 2]], 2))
-print(maxAverageRatio([[2, 4], [3, 9], [4, 5], [2, 10]], 4))
+solution = Solution()
+print(solution.maxAverageRatio([[1, 2], [3, 5], [2, 2]], 2))
+print(solution.maxAverageRatio([[2, 4], [3, 9], [4, 5], [2, 10]], 4))
