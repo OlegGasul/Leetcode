@@ -1,3 +1,5 @@
+import bisect
+
 class Solution:
     def isMajorityElement(self, nums, target: int) -> bool:
         if not nums:
@@ -5,18 +7,12 @@ class Solution:
         
         length = len(nums)
 
-        i = 0
-        while i < length and nums[i] < target:
-            i += 1
-
-        if i >= length:
+        a = bisect.bisect_left(nums, target)
+        if a >= length or nums[a] != target:
             return False
-        
-        j = i
-        while j < length and nums[j] == target:
-            j += 1
-        
-        return j - i > length / 2
+        b = bisect.bisect_right(nums, target)
+
+        return b - a > len(nums) / 2
 
 solution = Solution()
 assert solution.isMajorityElement([2, 4, 5, 5, 5, 5, 5, 6, 6], 5) == True
