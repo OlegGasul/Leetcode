@@ -6,6 +6,8 @@ class Solution:
             return False
         
         length = len(nums)
+        if nums[length // 2] != target:
+            return False
 
         a = bisect.bisect_left(nums, target)
         if a >= length or nums[a] != target:
