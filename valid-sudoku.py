@@ -1,37 +1,29 @@
-def isValidSudoku(board) -> bool:
-    rows = []
-    cols = []
+class Solution:
+    def isValidSudoku(self, board) -> bool:
+        rows = [set() for x in range(9)]
+        cols = [set() for x in range(9)]
+        squares = [[set() for x in range(3)] for y in range(3)]
         
-    squares = [[[] for x in range(3)] for y in range(3)] 
+        for i in range(9):
+            for j in range(9):
+                num = board[i][j]
+                if num == ".":
+                    continue
 
-    for i in range(3):
-        for j in range(3):
-            squares[i][j] = [0] * 10
+                if num in rows[i]:
+                    return False
+                if num in cols[j]:
+                    return False
+                if num in squares[i // 3][j // 3]:
+                    return False
+                
+                rows[i].add(num)
+                cols[j].add(num)
+                squares[i // 3][j // 3].add(num)
 
-    for i in range(9):
-        rows.append([0] * 10)
-        cols.append([0] * 10)
-    
-    for i in range(9):
-        for j in range(9):
-            if board[i][j] == ".":
-                continue
+        return True
 
-            value = int(board[i][j])
-
-            if rows[i][value] == 1:
-                return False
-            if cols[j][value] == 1:
-                return False
-            if squares[i // 3][j // 3][value] == 1:
-                return False
-
-            rows[i][value] = 1
-            cols[j][value] = 1
-            squares[i // 3][j // 3][value] = 1
-
-    return True
-
+solution = Solution()
 
 board = [
     ["5","3",".",".","7",".",".",".","."],
@@ -43,7 +35,7 @@ board = [
     [".","6",".",".",".",".","2","8","."],
     [".",".",".","4","1","9",".",".","5"],
     [".",".",".",".","8",".",".","7","9"]]
-print(isValidSudoku(board))
+print(solution.isValidSudoku(board))
 
 board = [
     ["8","3",".",".","7",".",".",".","."],
@@ -55,4 +47,4 @@ board = [
     [".","6",".",".",".",".","2","8","."],
     [".",".",".","4","1","9",".",".","5"],
     [".",".",".",".","8",".",".","7","9"]]
-print(isValidSudoku(board))
+print(solution.isValidSudoku(board))
