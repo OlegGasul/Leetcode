@@ -1,21 +1,19 @@
-def checkRecord(s: str) -> bool:
-    absent = 0
-    late = 0
-        
-    for ch in s:
-        if ch == "P":
-            late = 0
-        elif ch == "A":
-            absent += 1
-            if absent > 1:
-                return False
-            late = 0
-        elif ch == "L":
-            late += 1
-            if late >= 3:
-                return False
-                
-    return True
+class Solution:
+    def checkRecord(self, s: str) -> bool:
+        absent = False
 
-print(checkRecord("PPALLP"))
-print(checkRecord("PPALLL"))
+        for i in range(len(s)):
+            record = s[i]
+            
+            if record == "A":
+                if absent:
+                    return False
+                absent = True
+            elif record == "L" and i >= 2 and s[i - 1] == s[i - 2] == "L":
+                return False
+
+        return True
+
+solution = Solution()
+print(solution.checkRecord("PPALLP"))
+print(solution.checkRecord("PPALLL"))
