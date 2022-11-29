@@ -14,11 +14,7 @@ class Solution:
             
             groups[key].append(s)
         
-        result = []
-        for k, v in groups.items():
-            result.append(v)
-        
-        return result
+        return groups.values()
 
 solution = Solution()
 print(solution.groupStrings(["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]) == [["acef"], ["a", "z"], ["abc", "bcd", "xyz"], ["az", "ba"]])
