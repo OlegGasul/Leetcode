@@ -46,3 +46,9 @@ select employee_id,
     end as "bonus"
 from Employees
 order by employee_id
+
+-- https://leetcode.com/problems/game-play-analysis-i/description/
+-- Write an SQL query to report the first login date for each player.
+select player_id, min(event_date) first_login
+from Activity
+group by player_id;
