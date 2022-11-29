@@ -52,3 +52,13 @@ order by employee_id
 select player_id, min(event_date) first_login
 from Activity
 group by player_id;
+
+-- https://leetcode.com/problems/game-play-analysis-ii/description/
+-- Write an SQL query to report the device that is first logged in for each player.
+select a.player_id, a.device_id
+from Activity a inner join
+(
+ select player_id, min(event_date) event_date
+ from Activity
+ group by player_id
+) q on a.player_id = q.player_id and a.event_date = q.event_date;
