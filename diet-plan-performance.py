@@ -1,16 +1,19 @@
 class Solution:
     def dietPlanPerformance(self, calories, k: int, lower: int, upper: int) -> int:
-        n = len(calories)
-        prefixSum = [0] * (n + 1)
+        current = 0
 
-        points = 0
-
-        for i in range(n):
-            prefixSum[i] = prefixSum[i - 1] + calories[i]
+        for i in range(k):
+            current += calories[i]
         
-        for i in range(k - 1, n):
-            current = prefixSum[i] - prefixSum[i - k]
-            
+        points = 0
+        if current < lower:
+            points -= 1
+        elif current > upper:
+            points += 1
+        
+        for i in range(k, len(calories)):
+            current += calories[i]
+            current -= calories[i - k]
             if current < lower:
                 points -= 1
             elif current > upper:
