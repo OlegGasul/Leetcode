@@ -1,17 +1,19 @@
-from sortedcontainers import SortedSet
-
 class Solution:
     def maxChunksToSorted(self, arr) -> int:
-        sortedSet = SortedSet(arr)
+        n = len(arr)
+        minRight = [0] * (n + 1)
+        maxLeft = [0] * (n + 1)
+        minRight[-1] = arr[-1]
 
-        current = SortedSet()
-        result = 0
+        for i in range(n):
+            maxLeft[i] = max(maxLeft[i - 1], arr[i])
+            minRight[n - i - 1] = min(minRight[n - i], arr[n - i - 1])
 
-        for i in range(len(arr)):
-            current.add(arr[i])
-            if list(current) == list(sortedSet[ : i + 1]):
+        result = 1
+        for i in range(n - 1):
+            if maxLeft[i] <= minRight[i + 1]:
                 result += 1
-        
+
         return result
 
 solution = Solution()
