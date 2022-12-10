@@ -23,3 +23,4 @@ class Solution:
 solution = Solution()
 solution.plusOne(ListNode(1, ListNode(2, ListNode(3))))
 solution.plusOne(ListNode(1, ListNode(2, ListNode(9))))
+solution.plusOne(ListNode(1, ListNode(2, ListNode(8))))
