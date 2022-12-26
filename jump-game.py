@@ -1,23 +1,20 @@
 class Solution:
-    def canJump(self, nums) -> bool:
-        steps = nums[0]
+    def canJump(self, nums: List[int]) -> bool:
+        if len(nums) == 1:
+            return True
+        
+        current = 0
 
-        i = 0
-        while steps or i >= len(nums) - 1:
-            if i + steps >= len(nums) - 1:
-                return True
+        for i in range(len(nums) - 1):
+            if nums[i] > current:
+                current = nums[i]
+
+            if current == 0:
+                return False
             
-            maxJump = -1
-            maxIndex = None
-            for j in range(i + steps, i, -1):
-                if j + nums[j] > maxJump:
-                    maxJump = j + nums[j]
-                    maxIndex = j
-
-            i = maxIndex
-            steps = nums[i]
-
-        return False
+            current -= 1
+        
+        return True
 
 solution = Solution()
 assert solution.canJump([2, 3, 1, 1, 4]) == True
