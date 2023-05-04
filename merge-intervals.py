@@ -27,5 +27,5 @@ class Solution:
         return intervals
 
 solution = Solution()
-assert solution.merge([[1 ,3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]
+assert solution.merge([[1, 3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]
 assert solution.merge([[2, 3], [2, 2], [3, 3], [1, 3], [5, 7], [2, 2], [4, 6]]) == [[1, 3], [4, 7]]
