@@ -19,8 +19,7 @@ def mergeKLists(lists):
         return None
     
     values = []
-    heapq.heapify(values)
-
+    
     i = 0
     while len(lists) > 0:
         node = lists[-1]
