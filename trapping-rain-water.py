@@ -1,31 +1,32 @@
-import heapq
-
 class Solution:
     def trap(self, height) -> int:
         length = len(height)
         if length < 3:
             return 0
-        
-        visited = set()
 
-        hq = []
+        left = 0
+        right = length - 1
 
-        heapq.heappush(hq, [height[0], 0, 1])
-        heapq.heappush(hq, [height[-1], length - 1, -1])
-
-        visited.add(0)
-        visited.add(length - 1)
+        leftMax = height[left]
+        rightMax = height[right]
 
         result = 0
 
-        while hq:
-            h, i, d = heapq.heappop(hq)
-            newI = i + d
-            
-            if not newI in visited:
-                result += max(0, h - height[newI])
-                heapq.heappush(hq, [max(h, height[newI]), newI, d])
-                visited.add(newI)
+        while left < right:
+            if leftMax < rightMax:
+                current = height[left + 1]
+
+                result += max(0, leftMax - current)
+                
+                leftMax = max(leftMax, current)
+                left += 1
+            else:
+                current = height[right - 1]
+                
+                result += max(0, rightMax - current)
+                
+                rightMax = max(rightMax, current)
+                right -= 1
 
         return result
 
