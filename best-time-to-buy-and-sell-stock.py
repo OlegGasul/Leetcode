@@ -1,16 +1,16 @@
-def maxProfit(prices) -> int:
-    length = len(prices)
-    dp = [0] * length
-    dp[0] = prices[0]
+class Solution:
+    def maxProfit(self, prices) -> int:
+        minimum = prices[0]
         
-    result = -1
+        result = 0
         
-    for i in range(1, length):
-        if prices[i] > dp[i - 1]:
-            result = max(result, prices[i] - dp[i - 1])
-        dp[i] = min(prices[i], dp[i - 1])
+        for i in range(1, len(prices)):
+            if prices[i] > minimum:
+                result = max(result, prices[i] - minimum)
+            minimum = min(minimum, prices[i])
             
-    return result if result > 0 else 0
+        return result
 
-print(maxProfit([7, 1, 5, 3, 6, 4]))
-print(maxProfit([7, 6, 4, 3, 1]))
+solution = Solution()
+assert solution.maxProfit([7, 1, 5, 3, 6, 4]) == 5
+assert solution.maxProfit([7, 6, 4, 3, 1]) == 0
