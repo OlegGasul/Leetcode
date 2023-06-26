@@ -10,27 +10,23 @@ class TreeNode:
 class Solution:
     def treeQueries(self, root, queries):
         depth = defaultdict(int)
-        height = defaultdict(int)
-        
+        cousins = defaultdict(list)
+
         def dfs(node, currentDepth):
             if not node:
                 return -1
 
             depth[node.val] = currentDepth
-            
             current = max(dfs(node.left, currentDepth + 1), dfs(node.right, currentDepth + 1)) + 1
-            height[node.val] = current
-
+            
+            cousins[currentDepth].append((current, node.val))
+            if len(cousins[currentDepth]) > 2:
+                cousins[currentDepth].sort(reverse = True)
+                cousins[currentDepth].pop()
+            
             return current
         
         dfs(root, 0)
-
-        cousins = defaultdict(list)
-        for val, currentDepth in depth.items():
-            cousins[currentDepth].append((height[val], val))
-            cousins[currentDepth].sort(reverse = True)
-            if len(cousins[currentDepth]) > 2:
-                cousins[currentDepth].pop()
 
         result = []
         for query in queries:
