@@ -17,6 +17,9 @@ class Solution:
                 result = min(result, abs((sortedNums[index - 1] - value)))
             if index <= len(sortedNums) - 1:
                 result = min(result, abs((sortedNums[index] - value)))
+            
+            if result == 0:
+                return 0
 
         return result if result != float('inf') else -1
 
